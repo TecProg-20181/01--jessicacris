@@ -16,11 +16,12 @@ typedef struct _image {
 } Image;
 
   int pixel_equal(Pixel pixelp1, Pixel pixelp2) {
-    if (pixelp1.red == pixelp2.red &&
-        pixelp1.green == pixelp2.green &&
-        pixelp1.blue == pixelp2.blue)
+    if (pixelp1.red == pixelp2.red && pixelp1.green == pixelp2.green && pixelp1.blue == pixelp2.blue)
         return 1;
-    return 0;
+
+      }else{
+        return 0;
+      }
 }
 
 
@@ -193,17 +194,25 @@ int main() {
                 int width = img.width;
                 int height = img.height;
 
-                if (horizontal == 1) width /= 2;
-                else height /= 2;
+                if (horizontal == 1){
+                  width /= 2;
 
+                }else {
+                  height /= 2;
+                }
+                
                 for (int auxA1 = 0; auxA1 < height; ++auxA1) {
                     for (int auxA2 = 0; auxA2 < width; ++auxA2) {
 
                         int x = auxA1;
                         int y = auxA2;
 
-                        if (horizontal == 1) y = img.width - 1 - auxA2;
-                        else x = img.height - 1 - auxA1;
+                        if (horizontal == 1){
+                          y = img.width - 1 - auxA2;
+
+                        }else {
+                          x = img.height - 1 - auxA1;
+                        }
 
                         Pixel aux1;
                         aux1.red = img.pixel[auxA1][auxA2][0];
