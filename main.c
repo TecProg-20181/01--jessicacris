@@ -15,14 +15,7 @@ typedef struct _image {
     unsigned int height;
 } Image;
 
-// This function stes the image color.
-//int max(int colorC1, int colorC2) {
-//    if (colorC1 > colorC2)
-//        return colorC1;
-//    return colorC1;
-//}
-
-int pixel_equal(Pixel pixelp1, Pixel pixelp2) {
+  int pixel_equal(Pixel pixelp1, Pixel pixelp2) {
     if (pixelp1.red == pixelp2.red &&
         pixelp1.green == pixelp2.green &&
         pixelp1.blue == pixelp2.blue)
