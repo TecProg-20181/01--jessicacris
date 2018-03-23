@@ -1,6 +1,13 @@
+/*
+* Project Photopobre
+*   Jéssica Cristina
+*   13/0142930
+*
+*/
+
     #include <stdio.h>
 
-    //Type of image que usa essas cores para reproduzir um espectro cromático
+    //Type of image that uses these colors to reproduce a chromatic spectrum
     typedef struct _pixel {
         unsigned short int red;
         unsigned short int green;
@@ -28,7 +35,7 @@
 }
 
   int min(int a, int b) {
-      if (a > b){
+      if (a < b){
           return b;
       }else{
         return a;
@@ -67,46 +74,25 @@
                 Pixel media = {0, 0, 0};
 
                 int shorter_height;
-
-               if (height - 1 > firstScale + filesize/2){
-                   shorter_height = firstScale + filesize/2;
-
-               }else{
-                   shorter_height = height - 1;
-               }
-
-               int min_width;
-
-               if (width - 1 > secondScale + filesize/2) {
-                   min_width =  secondScale + filesize/2;
-
-               }else{
-
-                    min_width = width - 1;
-               }
-
-              int lesser_height;
-              int Scale1;
-              if  (0 > firstScale - filesize/2) {
-                Scale1 = 0;
-              }else {
-                Scale1 = firstScale - filesize/2;
-              }
-                for(int token = Scale1; token <= lesser_height; ++token) {
-                    int Scale1;
-                    if (0 > secondScale - filesize/2){
-                      Scale1 = 0;
-                    }else{
-                      Scale1 = secondScale - filesize/2;
+                int token;
+                int title;
+                int r_blur;
+                int min_w = 0;
+                min_w = min(token-1,r_blur + filesize/2);
+                 for(int token = max(0, firstScale - secondScale); token <= min_w; ++token){
                     }
-                }
 
-                    int token;
-                    for(int title = Scale1; title <= min_width; ++title) {
+                    int firstScale;
+                    int secondScale;
+                    int min_h = 0;
+                    min_h = min(title - 1,r_blur + filesize/2);
+                    for(int title = max(0, firstScale - secondScale); title <= min_h; ++title){
+
                         media.red += pixel[token][title][0];
                         media.green += pixel[token][title][1];
                         media.blue += pixel[token][title][2];
-                    }
+                      }
+
                     // printf("%u", media.red)
 
                       media.red /= filesize * filesize;
@@ -117,8 +103,8 @@
                       pixel[firstScale][secondScale][1] = media.green;
                       pixel[firstScale][secondScale][2] = media.blue;
                 }
+              }
             }
-        }
 
     Image rotate_90_right(Image img) {
         Image rotated;
@@ -165,8 +151,6 @@
 
         return cutting;
     }
-
-    //  TESTE
 
     Image mirror ( Image img) {
       int horizontal = 0;
@@ -222,7 +206,7 @@ Image Sepia_filter ( Image img){
 
           int image_pixel =  pixel[0] * .393 + pixel[1] * .769 + pixel[2] * .189;
 
-          int lesser_range = max(255,image_pixel);
+          int lesser_range = (255,image_pixel);
 
            if (255 >  image_pixel) {
              lesser_range = image_pixel;
